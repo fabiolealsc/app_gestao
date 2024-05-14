@@ -1,13 +1,15 @@
 <?php
 
 use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PrincipalController::class, 'principal']);
 
-Route::get('/contato', 'ContatoController@contato');
+Route::get('/contato', [ContatoController::class, 'contato']);
 
-Route::get('/sobrenos', 'SobreNosController@sobreNos');
+Route::get('/sobrenos', [SobreNosController::class, 'sobrenos']);
 
 /* TIPOS DE VERBOS
 Route::get($uri, $callback);
