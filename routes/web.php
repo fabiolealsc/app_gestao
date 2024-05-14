@@ -3,7 +3,7 @@
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'PrincipalController@principal');
+Route::get('/', [PrincipalController::class, 'principal']);
 
 Route::get('/contato', 'ContatoController@contato');
 
