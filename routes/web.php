@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {return "Home";});
-Route::get('/contato', function () {return "Contato";});
-Route::get('/sobrenos', function () {return "Sobre nós";});
+Route::get('/', 'PrincipalController@principal');
+
+Route::get('/contato', 'ContatoController@contato');
+
+Route::get('/sobrenos', 'SobreNosController@sobreNos');
 
 /* TIPOS DE VERBOS
 Route::get($uri, $callback);
