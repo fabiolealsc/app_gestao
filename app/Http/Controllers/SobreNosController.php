@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Middleware\LogAcessoMiddleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class SobreNosController extends Controller
+class SobreNosController extends Controller implements HasMiddleware
 {
+    public static function middleware()
+    {
+        return LogAcessoMiddleware::class;
+    }
     public function sobreNos()
     {
         return view('site.sobre-nos', ['titulo' => 'Sobre Nós']);

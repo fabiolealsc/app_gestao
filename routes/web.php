@@ -3,11 +3,19 @@
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::middleware(LogAcessoMiddleware::class)
+    ->get('/', [PrincipalController::class, 'principal'])
+    ->name('site.index');
 
-Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+
+Route::get('/contato', [ContatoController::class, 'contato'])
+    ->name('site.contato')
+    ->middleware(LogAcessoMiddleware::class);
+
+    
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 
 Route::get('/sobrenos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
