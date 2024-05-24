@@ -3,6 +3,7 @@
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PrincipalController::class, 'principal'])
@@ -16,6 +17,10 @@ Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contat
 
 Route::get('/sobrenos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 
+Route::post(
+    '/login',
+    [LoginController::class, 'autenticar']
+)->name('site.login');
 Route::get(
     '/login',
     [LoginController::class, 'index']
