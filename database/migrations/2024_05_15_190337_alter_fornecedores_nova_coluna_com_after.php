@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('fornecedores', function (Blueprint $table) {
             $table->string('site', 150)->after('nome')->nullable();
+            $table->softDeletes();
         });
     }
 

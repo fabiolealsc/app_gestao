@@ -6,7 +6,7 @@
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Fornecedor</p>
+            <p>{{$titulo}}</p>
 
         </div>
         <div class="menu">
@@ -17,6 +17,7 @@
         </div>
         <div class="informacao-pagina">
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
+                {{ $msg ?? '' }}
                 <form action="{{ route('app.fornecedor.listar') }}" method="post">
                     @csrf
                     <input type="text" name='nome' placeholder='Nome' class="borda-preta">
