@@ -1,7 +1,7 @@
 <div class="topo">
 
     <div class="logo">
-        <img src="../img/logo.png">
+        <img src="../../../../img/logo.png">
     </div>
 
     <div class="menu">

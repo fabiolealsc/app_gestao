@@ -3,7 +3,7 @@
     <head>
         <title>Super Gestão - @yield('titulo')</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ '../css/estilo_basico.css'}}">
+        <link rel="stylesheet" href="{{ '../../../../css/estilo_basico.css'}}">
     </head>
 
     <body>
