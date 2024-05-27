@@ -59,6 +59,7 @@ class LoginController extends Controller
     }
     public function sair()
     {
-        return "SAIR";
+        session_destroy();
+        return redirect()->route('site.index', ['titulo' => 'Home']);
     }
 }

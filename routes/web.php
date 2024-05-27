@@ -39,7 +39,7 @@ Route::middleware('autenticacao:default, visitante')->prefix('/app',)->group(fun
 });
 
 Route::fallback(function () {
-    return view('site.principal');
+    return redirect()->route('site.index');
 });
 
 
