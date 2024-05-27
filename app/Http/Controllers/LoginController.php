@@ -5,14 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 class LoginController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('site.login', ['titulo' => 'Login']);
+        $error = '';
+
+        if ($request->get('error') == 1) {
+            $error = "Usuário e ou senha não existe";
+        }
+        if ($request->get('error') == 2) {
+            $error = "Necessário realizar login para ter acesso";
+        }
+
+        return view('site.login', ['titulo' => 'Login', 'error' => $error]);
     }
+    
     public function autenticar(Request $request): string
     {
         //rules
@@ -28,18 +39,26 @@ class LoginController extends Controller
 
         $request->validate($regras, $feedback);
 
-        $email = $request->get('email');
+        $email = $request->get('usuario');
         $senha = $request->get('senha');
 
         $user = new User();
 
-        $existe = $user->where('email', $email)->where('password', password_hash($senha, PASSWORD_DEFAULT))->get()->first();
-
-        if ($existe) {
-            return 'Chagamos ateh aqui';
+        $usuario = $user->where('email', $email)
+        ->where('password', $senha)
+        ->get()
+        ->first();
+        if (isset($usuario->name)) {
+            session_start();
+            $_SESSION['nome'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+            return redirect()->route('app.home', ['titulo' => 'Home']);
         } else {
-            return 'Usuario inexistente';
+            return redirect()->route('site.login', ['error' => 1]);
         }
-        //
+    }
+    public function sair()
+    {
+        return "SAIR";
     }
 }
