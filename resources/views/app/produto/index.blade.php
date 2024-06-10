@@ -15,6 +15,7 @@
         </div>
         <div class="informacao-pagina">
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
+                {{ $produtos->toJson() }}
                 <table border="1" width='100%'>
                     <thead>
                         <tr>
@@ -57,6 +58,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $produtos->toJson() }}
                 {{ $produtos->appends($request)->links() }}
                 
             </div>
