@@ -26,9 +26,9 @@ class FornecedorController extends Controller
     public function adicionar(Request $request)
     {
         $msg = '';
-        //print_r($request->all());
+
         if ($request->input('_token') != '' && $request->input('id') == '') {
-            //echo 'Cadastro';
+
             $regras = [
                 'nome' => 'required|min:3|max:40',
                 'site' => 'required',
@@ -68,7 +68,6 @@ class FornecedorController extends Controller
     public function editar($id, $msg = '')
     {
         $fornecedor = Fornecedor::find($id);
-
         return view('app.fornecedor.adicionar', ['titulo' => 'Fornecedor-Editar', 'fornecedor' => $fornecedor, 'msg' => $msg]);
     }
     public function excluir($id)
