@@ -48,6 +48,7 @@ class ProdutoDetalheController extends Controller
     public function edit(ProdutoDetalhe $produtoDetalhe)
     {
         $unidades = Unidade::all();
+        $produtoDetalhe = ProdutoDetalhe::with(['produto'])->find($produtoDetalhe->id);
         return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe, 'unidades' => $unidades]);
     }
 
