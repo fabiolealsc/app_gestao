@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Models\ProdutoDetalhe;
 use App\Models\Unidade;
@@ -14,7 +15,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::with(['produtoDetalhe'])->paginate(10);
+        $produtos = Produto::with(['produtoDetalhe', 'fornecedor'])->paginate(10);
         
         /*
         foreach ($produtos as $key => $produto) {
@@ -35,7 +36,8 @@ class ProdutoController extends Controller
     public function create()
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', ['unidades' => $unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.create', ['unidades' => $unidades, 'fornecedores' => $fornecedores]);
     }
 
     /**
