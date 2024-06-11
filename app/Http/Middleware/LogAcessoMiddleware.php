@@ -11,7 +11,8 @@ class LogAcessoMiddleware
 {
     /**
      * Handle an incoming request.
-     *
+     * Pega o id da pessoa que está acessando as páginas e registra
+     * no banco de dados os dados de Log
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response

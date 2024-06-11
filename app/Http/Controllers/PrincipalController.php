@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\MotivoContato;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class PrincipalController extends Controller
 {
-    public function principal()
+    /**
+     * O método principal pesquisa os motivos contato no banco
+     * e retorna com a view principal.
+     */
+    public function principal(): View
     {
         $motivo_contatos = MotivoContato::all();
         return view('site.principal', ['titulo' => 'Home', 'motivo_contatos' => $motivo_contatos]);

@@ -12,6 +12,7 @@ class MotivoContatoSeeder extends Seeder
      */
     public function run(): void
     {
+        //Cria os motivos contato
         MotivoContato::create(['motivo_contato' => 'Dúvida']);
         MotivoContato::create(['motivo_contato' => 'Elogio']);
         MotivoContato::create(['motivo_contato' => 'Reclamação']);

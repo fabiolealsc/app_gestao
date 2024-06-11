@@ -17,7 +17,9 @@ class ProdutoDetalheController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostra a view para criar novo produto_detalhe, mas primeiro
+     * busca as unidade no banco de dados para enviar
+     * para a view.
      */
     public function create()
     {
@@ -26,7 +28,8 @@ class ProdutoDetalheController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Verifica as entradas e grava o dado no banco de dados se todas as
+     * regras forem obedecidas, senão retorna os erros para a ultima pagina
      */
     public function store(Request $request)
     {
@@ -43,7 +46,7 @@ class ProdutoDetalheController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostra a view edite passando o resultado da busca de unidades e produtos_detalhes
      */
     public function edit(ProdutoDetalhe $produtoDetalhe)
     {
@@ -51,9 +54,8 @@ class ProdutoDetalheController extends Controller
         $produtoDetalhe = ProdutoDetalhe::with(['produto'])->find($produtoDetalhe->id);
         return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe, 'unidades' => $unidades]);
     }
-
     /**
-     * Update the specified resource in storage.
+     * Grava as mudanças no banco de dados
      */
     public function update(Request $request, ProdutoDetalhe $produtoDetalhe)
     {

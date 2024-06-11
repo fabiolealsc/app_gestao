@@ -16,6 +16,7 @@
             </option>
         @endforeach
     </select>
+    {{ $errors->has('fornecedor_id') ? $errors->first('fornecedor_id') : '' }}
         
     <input type="text" name='nome' value="{{$produto->nome ?? old('nome') }}" placeholder='Nome' class="borda-preta">
     {{ $errors->has('nome') ? $errors->first('nome') : '' }}

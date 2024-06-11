@@ -16,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // Define os campos que podem ser gravados no banco
     protected $fillable = [
         'name',
         'email',
@@ -27,6 +28,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // Campos que serão escondidos na requisição
     protected $hidden = [
         'password',
         'remember_token',

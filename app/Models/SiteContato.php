@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class SiteContato extends Model
 {
     use HasFactory;
+    //Define os campo que podem ser gravados no banco
     protected $fillable = [
         'nome',
         'telefone',

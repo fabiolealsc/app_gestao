@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
+
 
 class LoginController extends Controller
 {
+    /**
+     *      O método index verifica as entradas e dispara
+     * um erro para a view Login
+     */
     public function index(Request $request): View
     {
         $error = '';
@@ -23,7 +26,13 @@ class LoginController extends Controller
 
         return view('site.login', ['titulo' => 'Login', 'error' => $error]);
     }
-    
+
+    /**
+     * O método autenticar recebe a requisição e verifica as
+     * entradas, se as mesmas não obedecem a regra de negócio 
+     * retorna a view login com as mensagens de erro. Se não retorna
+     * a view home com os dados do usuário na variável de sessão
+     */
     public function autenticar(Request $request): string
     {
         //rules
@@ -57,7 +66,9 @@ class LoginController extends Controller
             return redirect()->route('site.login', ['error' => 1]);
         }
     }
-    public function sair()
+
+    // A função sair exclui a variável de sessão e redireciona a rota para a HOME
+    public function sair(): string
     {
         session_destroy();
         return redirect()->route('site.index', ['titulo' => 'Home']);

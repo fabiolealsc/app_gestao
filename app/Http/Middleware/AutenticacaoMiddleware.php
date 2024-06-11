@@ -10,7 +10,7 @@ class AutenticacaoMiddleware
 {
     /**
      * Handle an incoming request.
-     *
+     * Inicia a sessão e depois verifica se tem email na sessão seão retorna o Erro 2
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next, string $metodo_autenticacao, string $perfil): Response

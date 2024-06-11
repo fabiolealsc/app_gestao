@@ -16,6 +16,9 @@ class FornecedorFactory extends Factory
      */
     public function definition(): array
     {
+        /**
+         * Define as regras de criação dos dados em massa
+         */
         return [
             'nome' => fake()->name(),
             'site' => fake()->domainName(),
