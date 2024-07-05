@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fornecedor;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
@@ -55,7 +56,7 @@ class FornecedorController extends Controller
      * do método update é feito a alteração usando os dados enviados pela requisição
      * e depois retorna uma mensagem de alteração feita com sucesso junto com a view.
      */
-    public function adicionar(Request $request): View
+    public function adicionar(Request $request): RedirectResponse|View
     {
         $msg = '';
 
@@ -91,7 +92,7 @@ class FornecedorController extends Controller
             if ($update) {
                 $msg = 'Edição realizado com sucesso!';
             } else {
-                $msg = 'Edição Falhou!';;
+                $msg = 'Edição Falhou!';
             }
             return redirect()->route('app.fornecedor.editar', ['titulo' => 'Fornecedor-Adicionar', 'msg' => $msg, 'id' => $request->input('id')]);
         }
